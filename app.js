@@ -35,7 +35,6 @@ let isClicked = false;
 images.forEach((image, index) => {
   image.addEventListener("mouseenter", (e) => {
     showPic.src = image.src;
-    // showPic.classList.add("active");
   });
 });
 
@@ -91,22 +90,33 @@ closeMediaMenu.addEventListener("click", () => {
   mediaMenu.style.display = "none";
 });
 
-sliderNext.addEventListener("click", () => {
-  curSlide++;
+const maxSlide = sliderImage.length;
+console.log(maxSlide);
+
+const goToSlides = () => {
   sliderImage.forEach((slide, i) => {
-    if (curSlide < 4) {
-      slide.style.transform = `translateX(-${curSlide * 100}%)`;
-    }
+    slide.style.transform = `translateX(-${curSlide * 100}%)`;
   });
+};
+
+sliderNext.addEventListener("click", () => {
+  if (curSlide === maxSlide - 1) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+
+  goToSlides();
 });
 
 sliderPrev.addEventListener("click", () => {
-  curSlide--;
-  sliderImage.forEach((slide, i) => {
-    if (curSlide < 4) {
-      slide.style.transform = `translateX(-${curSlide * 100}%)`;
-    }
-  });
+  if (curSlide === 0) {
+    curSlide = maxSlide - 1;
+  } else {
+    curSlide--;
+  }
+
+  goToSlides();
 });
 
 const handleAddtoCart = () => {

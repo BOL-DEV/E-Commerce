@@ -324,8 +324,9 @@
   margin-top: 2rem;
 }
 
-.none {
-  display: none;
+.active {
+  border: 4px solid hsl(26, 100%, 55%);
+  opacity: 0.5;
 }
 
 .quantity {
@@ -435,7 +436,7 @@
     height: 50vh;
     flex-wrap: nowrap;
     flex-shrink: 0;
-    transition: 1s ease-in;
+    transition: 0.5s linear;
   }
 
   .slider-image img {
